@@ -1,4 +1,7 @@
 <?php
 
-echo "<h1>Hotel Management System</h1>";
-echo "<p>Application is running successfully.</p>";
+require_once __DIR__ . '/../app/controllers/HousekeepingController.php';
+
+$controller = new HousekeepingController();
+
+$controller->dashboard();
