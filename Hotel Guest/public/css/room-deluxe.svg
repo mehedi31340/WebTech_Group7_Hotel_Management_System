@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+<rect width="900" height="600" fill="#eaf8f3"/><rect x="80" y="150" width="740" height="300" rx="30" fill="#ffffff"/>
+<rect x="140" y="235" width="280" height="125" rx="16" fill="#dceee8"/><rect x="470" y="205" width="260" height="155" rx="18" fill="#c6ddd5"/>
+<rect x="165" y="255" width="110" height="75" rx="10" fill="#f7faf9"/><rect x="285" y="255" width="110" height="75" rx="10" fill="#f7faf9"/>
+<text x="450" y="105" text-anchor="middle" font-family="Arial" font-size="42" font-weight="700" fill="#12352e">Deluxe Room</text>
+<text x="450" y="500" text-anchor="middle" font-family="Arial" font-size="22" fill="#079669">HotelGuest · Room Preview</text></svg>
