@@ -1,3 +1,21 @@
+<?php
+
+/** @var array $rooms */
+
+/** @var array $tasks */
+
+/** @var int $pendingInspection */
+
+/** @var array $roomStatusCounts */
+
+/** @var int $totalMaintenanceReports */
+
+/** @var int $completedTasks */
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,21 +41,21 @@
 
             <nav class="sidebar-nav">
 
-                <a href="#" class="nav-link active">
-                    Dashboard
-                </a>
-
-                <a href="#" class="nav-link">
+            <a href="?page=dashboard" class="nav-link active">
+                   Dashboard
+              </a>
+             <a href="?page=room-status" class="nav-link ">
                     Room Status
-                </a>
+               </a>
 
-                <a href="#" class="nav-link">
+
+              <a href="?page=tasks" class="nav-link ">
                     Housekeeping Tasks
-                </a>
+                 </a>
 
-                <a href="#" class="nav-link">
-                    Maintenance
-                </a>
+                <a href="?page=maintenance" class="nav-link ">
+                Maintenance
+            </a>
 
             </nav>
 
@@ -52,12 +70,12 @@
 
                 <div>
                     <h1>Housekeeping Dashboard</h1>
-                    <p>Monitor room readiness and housekeeping activities.</p>
+                   <!-- <p>Monitor room readiness and housekeeping activities.</p> -->
                 </div>
 
-                <div class="user-info">
-                    <span>Housekeeping Supervisor</span>
-                </div>
+             <div class="user-info">
+   <a href="index.php?page=login" style="text-decoration: none; font-weight:bold;color:black;">Profile</a>
+</div>
 
             </header>
 
@@ -69,7 +87,7 @@
 
                     <div class="card-content">
                         <p>Dirty Rooms</p>
-                        <h2>8</h2>
+                        <h2><?= $roomStatusCounts['dirty'] ?></h2>
                     </div>
 
                 </div>
@@ -79,7 +97,7 @@
 
                     <div class="card-content">
                         <p>Pending Inspection</p>
-                        <h2>3</h2>
+                       <h2><?= $pendingInspection ?></h2>
                     </div>
 
                 </div>
@@ -88,8 +106,8 @@
                 <div class="summary-card">
 
                     <div class="card-content">
-                        <p>Open Maintenance</p>
-                        <h2>2</h2>
+                        <p>Maintenance Report</p>
+                       <h2><?= $totalMaintenanceReports ?></h2>
                     </div>
 
                 </div>
@@ -98,8 +116,8 @@
                 <div class="summary-card">
 
                     <div class="card-content">
-                        <p>Completed Today</p>
-                        <h2>12</h2>
+                        <p>Completed Tasks</p>
+                       <h2><?= $completedTasks ?></h2>
                     </div>
 
                 </div>
@@ -114,10 +132,10 @@
 
                     <div>
                         <h2>Room Status Overview</h2>
-                        <p>Current status of hotel rooms.</p>
+                     
                     </div>
 
-                    <a href="#" class="view-all">
+                    <a href="?page=room-status" class="view-all">
                         View All
                     </a>
 
@@ -139,62 +157,62 @@
 
                         </thead>
 
+<tbody>
 
-                        <tbody>
+    <?php foreach (array_slice($rooms, 0, 5) as $room): ?>
 
-                            <tr>
-                                <td>101</td>
-                                <td>1</td>
-                                <td>Deluxe</td>
+        <tr>
 
-                                <td>
-                                    <span class="status status-dirty">
-                                        Dirty
-                                    </span>
-                                </td>
-                            </tr>
+            <td>
+                <?= htmlspecialchars($room['room_number']) ?>
+            </td>
 
+            <td>
+                <?= htmlspecialchars($room['floor']) ?>
+            </td>
 
-                            <tr>
-                                <td>102</td>
-                                <td>1</td>
-                                <td>Standard</td>
+            <td>
+                <?= htmlspecialchars($room['room_type']) ?>
+            </td>
 
-                                <td>
-                                    <span class="status status-ready">
-                                        Ready
-                                    </span>
-                                </td>
-                            </tr>
+          <td>
 
+    <?php
+    $status = $room['status'];
 
-                            <tr>
-                                <td>201</td>
-                                <td>2</td>
-                                <td>Suite</td>
+    $statusLabel = match ($status) {
+        'available' => 'Available',
+        'occupied' => 'Occupied',
+        'dirty' => 'Dirty',
+        'in_progress' => 'Cleaning',
+        'maintenance' => 'Maintenance',
+        'blocked' => 'Blocked',
+        default => ucfirst($status)
+    };
 
-                                <td>
-                                    <span class="status status-inspection">
-                                        Inspection
-                                    </span>
-                                </td>
-                            </tr>
+    $statusClass = match ($status) {
+        'available' => 'status-ready',
+        'occupied' => 'status-occupied',
+        'dirty' => 'status-dirty',
+        'in_progress' => 'status-cleaning',
+        'maintenance' => 'status-maintenance',
+        'blocked' => 'status-blocked',
+        default => 'status-dirty'
+    };
+    ?>
 
+    <span class="status <?= $statusClass ?>">
+        <?= htmlspecialchars($statusLabel) ?>
+    </span>
 
-                            <tr>
-                                <td>202</td>
-                                <td>2</td>
-                                <td>Deluxe</td>
+</td>
 
-                                <td>
-                                    <span class="status status-cleaning">
-                                        Cleaning
-                                    </span>
-                                </td>
-                            </tr>
+        </tr>
 
-                        </tbody>
+    <?php endforeach; ?>
 
+</tbody>
+                        
                     </table>
 
                 </div>
@@ -209,10 +227,10 @@
 
                     <div>
                         <h2>Recent Housekeeping Tasks</h2>
-                        <p>Latest housekeeping activities.</p>
+                       
                     </div>
 
-                    <a href="#" class="view-all">
+                    <a href="?page=tasks" class="view-all">
                         View All
                     </a>
 
@@ -236,65 +254,83 @@
                         </thead>
 
 
-                        <tbody>
+                       <tbody>
 
-                            <tr>
-                                <td>101</td>
-                                <td>Room Cleaning</td>
-                                <td>Housekeeper 01</td>
+    <?php foreach (array_slice($tasks, 0, 5) as $task): ?>
 
-                                <td>
-                                    <span class="priority priority-high">
-                                        High
-                                    </span>
-                                </td>
+        <tr>
 
-                                <td>
-                                    <span class="status status-cleaning">
-                                        In Progress
-                                    </span>
-                                </td>
-                            </tr>
+            <td>
+                <?= htmlspecialchars($task['room_number']) ?>
+            </td>
 
+            <td>
+                <?= htmlspecialchars($task['task_type']) ?>
+            </td>
 
-                            <tr>
-                                <td>201</td>
-                                <td>Deep Cleaning</td>
-                                <td>Housekeeper 03</td>
+            <td>
+                <?= htmlspecialchars($task['assigned_to_name']) ?>
+            </td>
 
-                                <td>
-                                    <span class="priority priority-medium">
-                                        Medium
-                                    </span>
-                                </td>
+            <td>
 
-                                <td>
-                                    <span class="status status-ready">
-                                        Completed
-                                    </span>
-                                </td>
-                            </tr>
+                <?php
+                $priority = $task['priority'];
 
+                $priorityLabel = match ($priority) {
+                    'low' => 'Low',
+                    'medium' => 'Medium',
+                    'high' => 'High',
+                    'urgent' => 'Urgent',
+                    default => ucfirst($priority)
+                };
 
-                            <tr>
-                                <td>202</td>
-                                <td>Bathroom Cleaning</td>
-                                <td>Housekeeper 02</td>
+                $priorityClass = match ($priority) {
+                    'low' => 'priority-low',
+                    'medium' => 'priority-medium',
+                    'high' => 'priority-high',
+                    'urgent' => 'priority-high',
+                    default => 'priority-medium'
+                };
+                ?>
 
-                                <td>
-                                    <span class="priority priority-low">
-                                        Low
-                                    </span>
-                                </td>
+                <span class="priority <?= $priorityClass ?>">
+                    <?= htmlspecialchars($priorityLabel) ?>
+                </span>
 
-                                <td>
-                                    <span class="status status-dirty">
-                                        Pending
-                                    </span>
-                                </td>
-                            </tr>
+            </td>
 
-                        </tbody>
+            <td>
+
+                <?php
+                $status = $task['status'];
+
+                $statusLabel = match ($status) {
+                    'pending' => 'Pending',
+                    'in_progress' => 'In Progress',
+                    'done' => 'Completed',
+                    default => ucfirst($status)
+                };
+
+                $statusClass = match ($status) {
+                    'pending' => 'status-dirty',
+                    'in_progress' => 'status-cleaning',
+                    'done' => 'status-ready',
+                    default => 'status-dirty'
+                };
+                ?>
+
+                <span class="status <?= $statusClass ?>">
+                    <?= htmlspecialchars($statusLabel) ?>
+                </span>
+
+            </td>
+
+        </tr>
+
+    <?php endforeach; ?>
+
+</tbody>
 
                     </table>
 
