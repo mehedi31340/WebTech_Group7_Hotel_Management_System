@@ -1,0 +1,311 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: #222;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.sidebar-user {
+    border-bottom: 1px solid #555;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: white;
+    padding: 12px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #444;
+    text-decoration: none;
+}
+
+.sidebar nav a.logout {
+    margin-top: 25px;
+    background: #8b0000;
+}
+
+.sidebar nav a.logout:hover {
+    background: #a00000;
+}
+
+.main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #ccc;
+    position: relative;
+}
+
+.user-info {
+    background: white;
+    padding: 11px 16px;
+    width: 60px;
+    right: 860px;
+
+    border-radius: 7px;
+    border: 1px solid #e5e7eb;
+
+    font-size: 13px;
+    color: #4b5563;
+    position : absolute;
+}
+
+
+h1,
+h2 {
+    margin-top: 0;
+}
+
+input,
+select,
+button {
+    padding: 8px;
+    margin: 5px 3px;
+}
+
+input,
+select {
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.stats div {
+    padding: 15px;
+    background: #eee;
+    border-radius: 6px;
+    min-width: 130px;
+    text-align: center;
+}
+
+.stats b {
+    font-size: 24px;
+}
+
+.search-form {
+    margin-bottom: 15px;
+}
+
+.search-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.show-all {
+    margin-left: 5px;
+}
+
+.found-info {
+    background: #f0f7f0;
+    border: 1px solid #cfe3cf;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
+.found-info p {
+    margin: 0;
+}
+
+.delete-link {
+    color: #b00020;
+}
+
+.inline-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0 4px 0 0;
+    vertical-align: middle;
+}
+
+.inline-form select,
+.inline-form button {
+    margin: 0;
+    padding: 4px 6px;
+}
+
+.error {
+    color: #b00020;
+}
+
+.success {
+    color: green;
+}
+
+.login-box {
+    background: white;
+    max-width: 400px;
+    margin: 70px auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #ccc;
+}
+
+.login-box label,
+.login-box input {
+    display: block;
+    width: 95%;
+}
+
+.login-box button {
+    width: 100%;
+}
+
+a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.sidebar a {
+    color: white;
+}
+
+.booking-form-card {
+    max-width: 640px;
+}
+
+.booking-form fieldset {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.booking-form legend {
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+.form-table {
+    width: 100%;
+    border: none;
+}
+
+.form-table tr {
+    border: none;
+}
+
+.form-table td {
+    border: none;
+    padding: 6px 4px;
+}
+
+.form-table td:first-child {
+    width: 160px;
+    font-weight: 600;
+}
+
+.form-table input,
+.form-table select {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.form-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-secondary {
+    padding: 8px 14px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #eee;
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .main-content {
+        margin-left: 190px;
+        width: calc(100% - 190px);
+    }
+
+    .form-table td:first-child {
+        width: auto;
+        display: block;
+    }
+}
+
+
+
