@@ -1,0 +1,590 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #1f2937;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+    gap: 0;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 250px;
+    height: calc(100vh - 30px);
+    margin: 15px;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+
+    background: #a0aec0;
+
+    color: white;
+
+    padding: 25px 18px;
+
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 5px 10px 30px;
+    border-bottom: 1px solid #e1e5ec;
+}
+
+.sidebar-header h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.sidebar-header p {
+    font-size: 13px;
+    color: #fafbfd;
+}
+
+.sidebar-nav {
+    margin-top: 25px;
+}
+
+.nav-link {
+    display: block;
+    padding: 13px 15px;
+    margin-bottom: 8px;
+
+    color: #f4f6f9;
+    text-decoration: none;
+
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    background: #cbd5e0;
+    color: white;
+}
+
+.nav-link.active {
+    background: #718096;
+    color: white;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 30px;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    font-size: 27px;
+    margin-bottom: 7px;
+}
+
+.topbar p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.user-info {
+    background: white;
+    padding: 11px 16px;
+
+    border-radius: 7px;
+    border: 1px solid #e5e7eb;
+
+    font-size: 13px;
+    color: #4b5563;
+}
+
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+.summary-card {
+    background: #e2e8f0;
+
+    padding: 22px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.card-content p {
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.card-content h2 {
+    font-size: 28px;
+    color: #111827;
+}
+
+
+/* =========================
+   DASHBOARD SECTIONS
+========================= */
+
+.dashboard-section {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.section-header p {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.view-all {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f9fafb;
+
+    color: #6b7280;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: left;
+
+    padding: 13px 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+td {
+    padding: 14px 20px;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/* =========================
+   STATUS BADGES
+========================= */
+
+.status,
+.priority {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-dirty {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.status-ready {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status-inspection {
+    background: #fef3c7;
+    color: #a16207;
+}
+
+.status-cleaning {
+    background: #044702;
+    color: #20e254;
+}
+
+
+/* =========================
+   PRIORITY
+========================= */
+
+.priority-high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.priority-medium {
+    background: #fef3c7;
+    color: #a16207;
+}
+
+.priority-low {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .summary-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================
+   ROOM STATUS PAGE
+========================= */
+
+.primary-button {
+    border: none;
+    background: #2563eb;
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   ROOM FILTERS
+========================= */
+
+.room-filters {
+    display: flex;
+
+    gap: 18px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    background: #fafafa;
+}
+
+.filter-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.filter-group label {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #4b5563;
+}
+
+.filter-group select,
+.filter-group input {
+    min-width: 150px;
+
+    padding: 9px 11px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 6px;
+
+    background: white;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.filter-group input {
+    width: 220px;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #2563eb;
+}
+
+
+/* =========================
+   ROOM ACTION
+========================= */
+
+.action-button {
+
+    text-decoration: none;
+    
+    border: 1px solid #d1d5db;
+
+    background: white;
+
+    color: #374151;
+
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background: #f3f4f6;
+    text-decoration: none;
+}
+
+
+/* =========================
+   ADDITIONAL STATUS COLORS
+========================= */
+
+.status-maintenance {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.status-blocked {
+    background: #e5e7eb;
+    color: #125ed9;
+}
+
+.status-occupied {
+    background: #e5e7eb;
+    color: #2b6cd4;
+}
+
+/* =========================
+   ROOM TABLE
+========================= */
+
+.dashboard-section table td:first-child {
+    font-weight: 500;
+}
+
+.dashboard-section table td:nth-child(5) {
+    color: #6b7280;
+}
+
+/* =========================
+   HOUSEKEEPING TASKS
+========================= */
+
+.priority {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 12px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.priority-normal {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.priority-urgent {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* =========================
+   MAINTENANCE SEVERITY
+========================= */
+
+.severity {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 12px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.severity-low {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.severity-medium {
+    background: #fef3c7;
+    color: #a16207;
+}
+
+.severity-high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+
+.danger-zone {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.danger-zone h2 {
+    margin-bottom: 8px;
+}
+
+.danger-zone p {
+    margin-bottom: 15px;
+}
+
+.danger-button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #dc3545;
+    color: white;
+    font-weight: 600;
+}
+
+.danger-button:hover {
+    background-color: #bb2d3b;
+}
+
+.supervisor-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.supervisor-icon {
+    font-size: 20px;
+}
